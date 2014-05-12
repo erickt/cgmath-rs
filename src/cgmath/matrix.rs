@@ -225,6 +225,14 @@ impl<S: BaseNum> Matrix4<S> {
 
     /// Create a new matrix, providing columns.
     #[inline]
+    pub fn translate(v: &Vector3<S>) -> Matrix4<S> {
+        Matrix4::new(one(),  zero(), zero(), zero(),
+                     zero(), one(),  zero(), zero(),
+                     zero(), zero(), one(),  zero(),
+                     v.x,    v.y,    v.z,    one())
+    }
+
+    #[inline]
     pub fn from_cols(c0: Vector4<S>, c1: Vector4<S>, c2: Vector4<S>, c3: Vector4<S>) -> Matrix4<S> {
         Matrix4 { x: c0, y: c1, z: c2, w: c3 }
     }
